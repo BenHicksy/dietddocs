@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+
+{% block navbar %}
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#">
+                Get Slim with Slim
+            </a>
+        </li>
+        {% for doc in docs %}
+            <li>
+                <a href="{{ path_for('docs', {fname : doc.slug}) }}"> {{ doc.fname }}</a>
+            </li>
+            {% if current_file == doc.fname and doc.anchors is not empty %}
+                <ul>
+                    {% for anchor in doc.anchors %}
+                        <li>
+                            <a href="#{{ anchor }}"> {{ anchor }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block content %}
+    {{ page_content|raw }}
+{% endblock %}

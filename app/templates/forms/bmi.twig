@@ -1,0 +1,39 @@
+{% extends 'md_document.twig' %}
+
+{% block content %}
+
+    <h1>Calculate your BMI</h1>
+
+
+    <form action="{{ path_for('bmi') }}" method="post">
+
+         <div class="form-group {% if errors.weight %}has-error{% endif %}">
+            <label class="control-label" for="weight"> What is your weight(kg)?</label>
+            <input type="text" class="form-control" name="weight" value="{{ bmi.weight }}"  />
+            {% if errors.weight %}<span class="help-block">{{ errors.weight.0 }}</span>{% endif %}
+        </div>
+
+        <div class="form-group {% if errors.height %}has-error{% endif %}">
+            <label class="control-label" for="height"> What is your height(m)?</label>
+            <input type="text" class="form-control" name="height" value="{{ bmi.height }}"  />
+            {% if errors.height %}<span class="help-block">{{ errors.height.0 }}</span>{% endif %}
+        </div>
+
+        <hr>
+
+        <p>Enter your email to subscribe to our newsletter</p>
+
+        <div class="form-group {% if errors.email %}has-error{% endif %}">
+            <label class="control-label" for="email">What is your email?</label>
+            <input type="text" class="form-control" name="email" value="{{ bmi.email }}"  />
+            {% if errors.email %}<span class="help-block">{{ errors.email.0 }}</span>{% endif %}
+        </div>
+
+        <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
+        <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-default" href="{{ path_for('docs-home') }}">Cancel</a>
+
+    </form>
+
+{% endblock %}

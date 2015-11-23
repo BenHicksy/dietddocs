@@ -1,0 +1,13 @@
+{% extends 'md_document.twig' %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Your Basal Metabolic Rate (BMR)  is: {{ bmr_value }}</h3>
+            <p>
+                <a class="btn btn-primary btn-lg" href="{{ path_for('bmr') }}" role="button">
+                    Try again? &raquo;</a>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

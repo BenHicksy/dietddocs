@@ -1,0 +1,16 @@
+{% extends 'md_document.twig' %}
+
+{% block content %}
+    <h2>User Delete</h2>
+    <h4>User {{ user.user_name }} ({{ user.email }}) will be deleted!</h4>
+    <h4>Ary you sure?</h4>
+
+    <form action="{{ OK_link }}" method="post">
+        <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
+        <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="btn btn-default" href="{{ path_for('admin-users-all') }}">Cancel</a>
+
+    </form>
+
+{% endblock %}

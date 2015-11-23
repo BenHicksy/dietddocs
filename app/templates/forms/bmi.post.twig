@@ -1,0 +1,61 @@
+{% extends 'md_document.twig' %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Your Body mass index (BMI) is: {{ bmi_value }}</h3>
+            <h6>
+                Thank you for subscribing to our newsletter using {{ email }}. We have sent you an activation request.
+            </h6>
+
+            <p>
+                <a class="btn btn-primary btn-lg" href="{{ path_for('bmi') }}" role="button">
+                    Try again? &raquo;</a>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "theme1",//theme1
+                title: {
+                    text: "BMI Levels"
+                },
+                animationEnabled: false,   // change to true
+
+                axisY:{
+                    maximum: 60,
+                    stripLines:[
+                        {
+                            value:{{ bmi_value }},
+                            label : "You"
+                        }
+                    ]
+                },
+
+                data: [
+                    {
+                        // Change type to "bar", "area", "spline", "pie",etc.
+                        type: "column",
+                        dataPoints: [
+                            {label: "Underweight", y: 18.5},
+                            {label: "Healthy ", y: 25},
+                            {label: "Pre-obese", y: 30},
+                            {label: "Obese 1", y: 35},
+                            {label: "Obese 2", y: 40},
+                            {label: "Obese 3", y: 60}
+                        ]
+                    }
+                ]
+            });
+            chart.render();
+        }
+    </script>
+
+    <script src="//canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+{% endblock %}

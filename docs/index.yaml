@@ -1,0 +1,12 @@
+toc:
+  - fname : 'parsedown.md'
+    slug  : 'parse-down-instructions.html'
+
+  - fname : 'whoops.md'
+    slug  : 'whoops-that-was-unintended.html'
+
+  - fname : 'slim.md'
+    slug  : 'all-that-diet.html'
+    anchors :
+    - installation
+    - license
